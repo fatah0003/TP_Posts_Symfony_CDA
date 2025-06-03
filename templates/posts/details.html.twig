@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4">{{ title }}</h1>
+
+        <div class="card">
+            <div class="card-body">
+                <p><strong>Titre :</strong> {{ title_post }}</p>
+                <p><strong>Contenu :</strong> {{ content }}</p>
+                <p><strong>Créé le :</strong> {{ created_at }}</p>
+            </div>
+        </div>
+
+        <a href="{{ path('post_index') }}" class="btn btn-secondary mt-3">Retour</a>
+    </div>
+{% endblock %}

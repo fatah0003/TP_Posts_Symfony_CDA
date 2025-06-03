@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1 class="mb-4">{{ title }}</h1>
+
+        <form method="post" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <label for="title" class="form-label">Titre :</label>
+                <input type="text" id="title" name="title" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="content" class="form-label">Contenu :</label>
+                <textarea id="content" name="content" class="form-control" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-success">Créer</button>
+            <a href="{{ path('post_index') }}" class="btn btn-secondary">Retour</a>
+        </form>
+    </div>
+{% endblock %}

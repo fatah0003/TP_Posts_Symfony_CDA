@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">{{ title }}</h1>
+
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Créé le</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td>{{ post.id }}</td>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.content }}</td>
+                    <td>{{ post.created_at }}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <a href="{{ path('post_details', {
+                                title: post.title,
+                                content: post.content,
+                                created_at: post.created_at
+                            }) }}" class="btn btn-info">Voir</a>
+                            <a href="{{ path('post_edit', { id: post.id }) }}" class="btn btn-warning">Modifier</a>
+                            <a href="{{ path('post_delete', { id: post.id }) }}" class="btn btn-danger"
+                               onclick="return confirm('Supprimer cet article ?')">Supprimer</a>
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">Aucun article trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <a href="{{ path('post_new') }}" class="btn btn-primary">Créer un nouvel article</a>
+        </div>
+    </div>
+{% endblock %}
